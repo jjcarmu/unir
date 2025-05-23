@@ -1,2 +1,2 @@
 # unir
-Repositorio para desarrolla actividades del Master en DevOps
+Repositorio para desarrollar actividades del Master en DevOps
