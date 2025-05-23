@@ -1,0 +1,18 @@
+---
+- hosts: all
+  become: true
+
+  tasks:
+    - name: Install PHP and required extensions
+      apt:
+        name:
+          - php
+          - php-fpm
+          - php-mysql
+          - php-xml
+        state: present
+        update_cache: yes
+    - name: Remove apache2
+      apt:
+        name: apache2
+        state: absent
