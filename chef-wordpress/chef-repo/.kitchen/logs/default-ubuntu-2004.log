@@ -1,0 +1,306 @@
+I, [2025-05-11T14:08:20.956617 #26600]  INFO -- default-ubuntu-2004: -----> Cleaning up any prior instances of <default-ubuntu-2004>
+I, [2025-05-11T14:08:20.958158 #26600]  INFO -- default-ubuntu-2004: -----> Destroying <default-ubuntu-2004>...
+I, [2025-05-11T14:08:25.840631 #26600]  INFO -- default-ubuntu-2004: ==> default: VM not created. Moving on...
+I, [2025-05-11T14:08:25.874500 #26600]  INFO -- default-ubuntu-2004: Vagrant instance <default-ubuntu-2004> destroyed.
+I, [2025-05-11T14:08:25.876878 #26600]  INFO -- default-ubuntu-2004: Finished destroying <default-ubuntu-2004> (0m4.92s).
+I, [2025-05-11T14:08:25.878179 #26600]  INFO -- default-ubuntu-2004: -----> Testing <default-ubuntu-2004>
+I, [2025-05-11T14:08:25.879076 #26600]  INFO -- default-ubuntu-2004: -----> Creating <default-ubuntu-2004>...
+I, [2025-05-11T14:08:29.174375 #26600]  INFO -- default-ubuntu-2004: Bringing machine 'default' up with 'virtualbox' provider...
+I, [2025-05-11T14:08:29.445199 #26600]  INFO -- default-ubuntu-2004: ==> default: Importing base box 'bento/ubuntu-20.04'...
+I, [2025-05-11T14:08:38.126549 #26600]  INFO -- default-ubuntu-2004: [KProgress: 10%[KProgress: 90%[K==> default: Matching MAC address for NAT networking...
+I, [2025-05-11T14:08:38.301981 #26600]  INFO -- default-ubuntu-2004: ==> default: Checking if box 'bento/ubuntu-20.04' version '202407.23.0' is up to date...
+I, [2025-05-11T14:08:40.954657 #26600]  INFO -- default-ubuntu-2004: ==> default: Setting the name of the VM: kitchen-chef-repo-default-ubuntu-2004-d57ee5d2-7b6c-449d-a994-cbb89b03efae
+I, [2025-05-11T14:08:41.803820 #26600]  INFO -- default-ubuntu-2004: ==> default: Clearing any previously set network interfaces...
+I, [2025-05-11T14:08:41.847492 #26600]  INFO -- default-ubuntu-2004: ==> default: Preparing network interfaces based on configuration...
+I, [2025-05-11T14:08:41.847690 #26600]  INFO -- default-ubuntu-2004:     default: Adapter 1: nat
+I, [2025-05-11T14:08:41.902588 #26600]  INFO -- default-ubuntu-2004: ==> default: Forwarding ports...
+I, [2025-05-11T14:08:41.997278 #26600]  INFO -- default-ubuntu-2004:     default: 22 (guest) => 2222 (host) (adapter 1)
+I, [2025-05-11T14:08:42.311917 #26600]  INFO -- default-ubuntu-2004: ==> default: Running 'pre-boot' VM customizations...
+I, [2025-05-11T14:08:42.375292 #26600]  INFO -- default-ubuntu-2004: ==> default: Booting VM...
+I, [2025-05-11T14:08:47.954449 #26600]  INFO -- default-ubuntu-2004: ==> default: Waiting for machine to boot. This may take a few minutes...
+I, [2025-05-11T14:08:48.194418 #26600]  INFO -- default-ubuntu-2004:     default: SSH address: 127.0.0.1:2222
+I, [2025-05-11T14:08:48.194577 #26600]  INFO -- default-ubuntu-2004:     default: SSH username: vagrant
+I, [2025-05-11T14:08:48.195086 #26600]  INFO -- default-ubuntu-2004:     default: SSH auth method: private key
+I, [2025-05-11T14:09:25.136904 #26600]  INFO -- default-ubuntu-2004:     default: Warning: Connection reset. Retrying...
+I, [2025-05-11T14:09:25.324734 #26600]  INFO -- default-ubuntu-2004:     default: Warning: Connection aborted. Retrying...
+I, [2025-05-11T14:09:25.866337 #26600]  INFO -- default-ubuntu-2004:     default: Warning: Remote connection disconnect. Retrying...
+I, [2025-05-11T14:09:28.705151 #26600]  INFO -- default-ubuntu-2004:     default: 
+I, [2025-05-11T14:09:28.705329 #26600]  INFO -- default-ubuntu-2004:     default: Vagrant insecure key detected. Vagrant will automatically replace
+I, [2025-05-11T14:09:28.705411 #26600]  INFO -- default-ubuntu-2004:     default: this with a newly generated keypair for better security.
+I, [2025-05-11T14:09:30.424202 #26600]  INFO -- default-ubuntu-2004:     default: 
+I, [2025-05-11T14:09:30.424478 #26600]  INFO -- default-ubuntu-2004:     default: Inserting generated public key within guest...
+I, [2025-05-11T14:09:31.515617 #26600]  INFO -- default-ubuntu-2004:     default: Removing insecure key from the guest if it's present...
+I, [2025-05-11T14:09:31.848757 #26600]  INFO -- default-ubuntu-2004:     default: Key inserted! Disconnecting and reconnecting using new SSH key...
+I, [2025-05-11T14:09:32.975508 #26600]  INFO -- default-ubuntu-2004: ==> default: Machine booted and ready!
+I, [2025-05-11T14:09:33.007264 #26600]  INFO -- default-ubuntu-2004: ==> default: Checking for guest additions in VM...
+I, [2025-05-11T14:09:33.049201 #26600]  INFO -- default-ubuntu-2004:     default: The guest additions on this VM do not match the installed version of
+I, [2025-05-11T14:09:33.049452 #26600]  INFO -- default-ubuntu-2004:     default: VirtualBox! In most cases this is fine, but in rare cases it can
+I, [2025-05-11T14:09:33.049564 #26600]  INFO -- default-ubuntu-2004:     default: prevent things such as shared folders from working properly. If you see
+I, [2025-05-11T14:09:33.049656 #26600]  INFO -- default-ubuntu-2004:     default: shared folder errors, please make sure the guest additions within the
+I, [2025-05-11T14:09:33.049747 #26600]  INFO -- default-ubuntu-2004:     default: virtual machine match the version of VirtualBox you have installed on
+I, [2025-05-11T14:09:33.049835 #26600]  INFO -- default-ubuntu-2004:     default: your host and reload your VM.
+I, [2025-05-11T14:09:33.049924 #26600]  INFO -- default-ubuntu-2004:     default: 
+I, [2025-05-11T14:09:33.050011 #26600]  INFO -- default-ubuntu-2004:     default: Guest Additions Version: 7.0.18
+I, [2025-05-11T14:09:33.050100 #26600]  INFO -- default-ubuntu-2004:     default: VirtualBox Version: 7.1
+I, [2025-05-11T14:09:33.050188 #26600]  INFO -- default-ubuntu-2004: ==> default: Setting hostname...
+I, [2025-05-11T14:09:34.013160 #26600]  INFO -- default-ubuntu-2004: ==> default: Mounting shared folders...
+I, [2025-05-11T14:09:34.013478 #26600]  INFO -- default-ubuntu-2004:     default: C:/Users/jhonj/.kitchen/cache => /tmp/omnibus/cache
+I, [2025-05-11T14:09:35.527475 #26600]  INFO -- default-ubuntu-2004: ==> default: Machine not provisioned because `--no-provision` is specified.
+I, [2025-05-11T14:09:41.400726 #26600]  INFO -- default-ubuntu-2004: [SSH] Established
+I, [2025-05-11T14:09:41.402069 #26600]  INFO -- default-ubuntu-2004: Vagrant instance <default-ubuntu-2004> created.
+I, [2025-05-11T14:09:41.404161 #26600]  INFO -- default-ubuntu-2004: Finished creating <default-ubuntu-2004> (1m15.52s).
+I, [2025-05-11T14:09:41.404724 #26600]  INFO -- default-ubuntu-2004: -----> Converging <default-ubuntu-2004>...
+I, [2025-05-11T14:09:41.751233 #26600]  INFO -- default-ubuntu-2004: Preparing files for transfer
+I, [2025-05-11T14:09:41.751859 #26600]  INFO -- default-ubuntu-2004: Preparing dna.json
+I, [2025-05-11T14:09:41.753443 #26600]  INFO -- default-ubuntu-2004: Preparing cookbooks from project directory
+I, [2025-05-11T14:09:41.793549 #26600]  INFO -- default-ubuntu-2004: Removing non-cookbook files before transfer
+I, [2025-05-11T14:09:41.821268 #26600]  INFO -- default-ubuntu-2004: Preparing validation.pem
+I, [2025-05-11T14:09:41.822819 #26600]  INFO -- default-ubuntu-2004: Preparing client.rb
+I, [2025-05-11T14:09:41.883958 #26600]  INFO -- default-ubuntu-2004: -----> Installing Chef install only if missing package
+I, [2025-05-11T14:09:41.895345 #26600]  INFO -- default-ubuntu-2004: Downloading https://omnitruck.chef.io/install.sh to file /tmp/install.sh
+I, [2025-05-11T14:09:41.895581 #26600]  INFO -- default-ubuntu-2004: Trying wget...
+I, [2025-05-11T14:09:42.020794 #26600]  INFO -- default-ubuntu-2004: Download complete.
+I, [2025-05-11T14:09:42.052571 #26600]  INFO -- default-ubuntu-2004: ubuntu 20.04 x86_64
+I, [2025-05-11T14:09:42.052857 #26600]  INFO -- default-ubuntu-2004: Getting information for chef stable  for ubuntu...
+I, [2025-05-11T14:09:42.053099 #26600]  INFO -- default-ubuntu-2004: downloading https://omnitruck.chef.io/stable/chef/metadata?v=&p=ubuntu&pv=20.04&m=x86_64
+I, [2025-05-11T14:09:42.053274 #26600]  INFO -- default-ubuntu-2004:   to file /tmp/install.sh.6841/metadata.txt
+I, [2025-05-11T14:09:42.053655 #26600]  INFO -- default-ubuntu-2004: trying wget...
+I, [2025-05-11T14:09:42.117561 #26600]  INFO -- default-ubuntu-2004: sha1	b7316b68e3d03a463eb9f485626205863f9cf4b9
+I, [2025-05-11T14:09:42.117733 #26600]  INFO -- default-ubuntu-2004: sha256	3da497c76cf720d27ef36a0944929839c8f3de3c7b1f22ea13ec1ad24d5fb6f9
+I, [2025-05-11T14:09:42.117899 #26600]  INFO -- default-ubuntu-2004: url	https://packages.chef.io/files/stable/chef/18.7.6/ubuntu/20.04/chef_18.7.6-1_amd64.deb
+I, [2025-05-11T14:09:42.118733 #26600]  INFO -- default-ubuntu-2004: version	18.7.6
+I, [2025-05-11T14:09:42.119428 #26600]  INFO -- default-ubuntu-2004: downloaded metadata file looks valid...
+I, [2025-05-11T14:09:42.141125 #26600]  INFO -- default-ubuntu-2004: downloading https://packages.chef.io/files/stable/chef/18.7.6/ubuntu/20.04/chef_18.7.6-1_amd64.deb
+I, [2025-05-11T14:09:42.141273 #26600]  INFO -- default-ubuntu-2004:   to file /tmp/omnibus/cache/chef_18.7.6-1_amd64.deb
+I, [2025-05-11T14:09:42.142120 #26600]  INFO -- default-ubuntu-2004: trying wget...
+I, [2025-05-11T14:09:48.915051 #26600]  INFO -- default-ubuntu-2004: Comparing checksum with sha256sum...
+I, [2025-05-11T14:09:49.462104 #26600]  INFO -- default-ubuntu-2004: 
+I, [2025-05-11T14:09:49.462390 #26600]  INFO -- default-ubuntu-2004: WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+I, [2025-05-11T14:09:49.462613 #26600]  INFO -- default-ubuntu-2004: 
+I, [2025-05-11T14:09:49.462826 #26600]  INFO -- default-ubuntu-2004: You are installing a package without a version pin.  If you are installing
+I, [2025-05-11T14:09:49.463038 #26600]  INFO -- default-ubuntu-2004: on production servers via an automated process this is DANGEROUS and you will
+I, [2025-05-11T14:09:49.463124 #26600]  INFO -- default-ubuntu-2004: be upgraded without warning on new releases, even to new major releases.
+I, [2025-05-11T14:09:49.463198 #26600]  INFO -- default-ubuntu-2004: Letting the version float is only appropriate in test, development or
+I, [2025-05-11T14:09:49.463288 #26600]  INFO -- default-ubuntu-2004: CI/CD environments.
+I, [2025-05-11T14:09:49.463433 #26600]  INFO -- default-ubuntu-2004: 
+I, [2025-05-11T14:09:49.463600 #26600]  INFO -- default-ubuntu-2004: WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+I, [2025-05-11T14:09:49.463769 #26600]  INFO -- default-ubuntu-2004: 
+I, [2025-05-11T14:09:49.463901 #26600]  INFO -- default-ubuntu-2004: Installing chef 
+I, [2025-05-11T14:09:49.464015 #26600]  INFO -- default-ubuntu-2004: installing with dpkg...
+I, [2025-05-11T14:09:49.538154 #26600]  INFO -- default-ubuntu-2004: Selecting previously unselected package chef.
+I, [2025-05-11T14:09:49.949488 #26600]  INFO -- default-ubuntu-2004: (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 41439 files and directories currently installed.)
+I, [2025-05-11T14:09:49.949675 #26600]  INFO -- default-ubuntu-2004: Preparing to unpack .../cache/chef_18.7.6-1_amd64.deb ...
+I, [2025-05-11T14:09:49.961355 #26600]  INFO -- default-ubuntu-2004: Unpacking chef (18.7.6-1) ...
+I, [2025-05-11T14:10:03.446316 #26600]  INFO -- default-ubuntu-2004: Setting up chef (18.7.6-1) ...
+I, [2025-05-11T14:10:03.509273 #26600]  INFO -- default-ubuntu-2004: Thank you for installing Chef Infra Client! For help getting started visit https://learn.chef.io
+I, [2025-05-11T14:10:03.586995 #26600]  INFO -- default-ubuntu-2004: Transferring files to <default-ubuntu-2004>
+I, [2025-05-11T14:10:05.293767 #26600]  INFO -- default-ubuntu-2004: +---------------------------------------------+
+I, [2025-05-11T14:10:05.294062 #26600]  INFO -- default-ubuntu-2004: [32m✔[0m 2 product licenses accepted.
+I, [2025-05-11T14:10:05.294300 #26600]  INFO -- default-ubuntu-2004: +---------------------------------------------+
+I, [2025-05-11T14:10:05.632195 #26600]  INFO -- default-ubuntu-2004: Chef Infra Client, version 18.7.6
+I, [2025-05-11T14:10:05.632497 #26600]  INFO -- default-ubuntu-2004: Patents: https://www.chef.io/patents
+I, [2025-05-11T14:10:05.633210 #26600]  INFO -- default-ubuntu-2004: Infra Phase starting
+I, [2025-05-11T14:10:06.945318 #26600]  INFO -- default-ubuntu-2004: Creating a new client identity for default-ubuntu-2004 using the validator key.
+I, [2025-05-11T14:10:07.090893 #26600]  INFO -- default-ubuntu-2004: Resolving cookbooks for run list: ["wordpress::default"]
+I, [2025-05-11T14:10:07.122846 #26600]  INFO -- default-ubuntu-2004: Synchronizing cookbooks:
+I, [2025-05-11T14:10:07.144585 #26600]  INFO -- default-ubuntu-2004:   - wordpress (0.0.0)
+I, [2025-05-11T14:10:07.145331 #26600]  INFO -- default-ubuntu-2004: Installing cookbook gem dependencies:
+I, [2025-05-11T14:10:07.145863 #26600]  INFO -- default-ubuntu-2004: Compiling cookbooks...
+I, [2025-05-11T14:10:07.633446 #26600]  INFO -- default-ubuntu-2004: Loading Chef InSpec profile files:
+I, [2025-05-11T14:10:07.634288 #26600]  INFO -- default-ubuntu-2004: Loading Chef InSpec input files:
+I, [2025-05-11T14:10:07.634878 #26600]  INFO -- default-ubuntu-2004: Loading Chef InSpec waiver files:
+I, [2025-05-11T14:10:07.647327 #26600]  INFO -- default-ubuntu-2004: Converging 28 resources
+I, [2025-05-11T14:10:07.647903 #26600]  INFO -- default-ubuntu-2004: Recipe: wordpress::apache
+I, [2025-05-11T14:10:07.648569 #26600]  INFO -- default-ubuntu-2004:   * apt_update[Update the apt cache daily] action periodic
+I, [2025-05-11T14:10:07.649116 #26600]  INFO -- default-ubuntu-2004:     * directory[/var/lib/apt/periodic] action create (up to date)
+I, [2025-05-11T14:10:07.660596 #26600]  INFO -- default-ubuntu-2004:     * directory[/etc/apt/apt.conf.d] action create (up to date)
+I, [2025-05-11T14:10:07.661492 #26600]  INFO -- default-ubuntu-2004:     * file[/etc/apt/apt.conf.d/15update-stamp] action create_if_missing
+I, [2025-05-11T14:10:07.682957 #26600]  INFO -- default-ubuntu-2004:       - create new file /etc/apt/apt.conf.d/15update-stamp
+I, [2025-05-11T14:10:07.683981 #26600]  INFO -- default-ubuntu-2004:       - update content in file /etc/apt/apt.conf.d/15update-stamp from none to 174cdb
+I, [2025-05-11T14:10:07.685778 #26600]  INFO -- default-ubuntu-2004:       --- /etc/apt/apt.conf.d/15update-stamp	2025-05-11 19:10:05.796092968 +0000
+I, [2025-05-11T14:10:07.686962 #26600]  INFO -- default-ubuntu-2004:       +++ /etc/apt/apt.conf.d/.chef-15update-stamp20250511-11753-xggms2	2025-05-11 19:10:05.792094968 +0000
+I, [2025-05-11T14:10:07.687955 #26600]  INFO -- default-ubuntu-2004:       @@ -1 +1,2 @@
+I, [2025-05-11T14:10:07.688958 #26600]  INFO -- default-ubuntu-2004:       +APT::Update::Post-Invoke-Success {"touch /var/lib/apt/periodic/update-success-stamp 2>/dev/null || true";};
+I, [2025-05-11T14:10:15.434264 #26600]  INFO -- default-ubuntu-2004:     * execute[apt-get -q update] action run
+I, [2025-05-11T14:10:15.434538 #26600]  INFO -- default-ubuntu-2004:       - execute ["apt-get", "-q", "update"]
+I, [2025-05-11T14:10:15.435215 #26600]  INFO -- default-ubuntu-2004:     - update new lists of packages
+I, [2025-05-11T14:10:24.880570 #26600]  INFO -- default-ubuntu-2004:   * execute[install apache2 without prompt] action run
+I, [2025-05-11T14:10:24.880859 #26600]  INFO -- default-ubuntu-2004:     - execute DEBIAN_FRONTEND=noninteractive apt-get install -y apache2
+I, [2025-05-11T14:10:24.881582 #26600]  INFO -- default-ubuntu-2004:   * service[apache2] action nothing (skipped due to action :nothing)
+I, [2025-05-11T14:10:24.882215 #26600]  INFO -- default-ubuntu-2004:   * file[/etc/apache2/sites-enabled/000-default.conf] action delete[2025-05-11T19:10:23+00:00] WARN: File /etc/apache2/sites-enabled/000-default.conf managed by file[/etc/apache2/sites-enabled/000-default.conf] is really a symlink (to /etc/apache2/sites-available/000-default.conf). Managing the source file instead.
+I, [2025-05-11T14:10:24.882475 #26600]  INFO -- default-ubuntu-2004: [2025-05-11T19:10:23+00:00] WARN: Disable this warning by setting `manage_symlink_source true` on the resource
+I, [2025-05-11T14:10:24.882754 #26600]  INFO -- default-ubuntu-2004: [2025-05-11T19:10:23+00:00] WARN: In a future release, 'manage_symlink_source' will not be enabled by default
+I, [2025-05-11T14:10:24.883600 #26600]  INFO -- default-ubuntu-2004: 
+I, [2025-05-11T14:10:24.884161 #26600]  INFO -- default-ubuntu-2004:     - delete file /etc/apache2/sites-enabled/000-default.conf
+I, [2025-05-11T14:10:24.884751 #26600]  INFO -- default-ubuntu-2004:   * template[/etc/apache2/sites-available/wordpress.conf] action create
+I, [2025-05-11T14:10:24.885301 #26600]  INFO -- default-ubuntu-2004:     - create new file /etc/apache2/sites-available/wordpress.conf
+I, [2025-05-11T14:10:24.885522 #26600]  INFO -- default-ubuntu-2004:     - update content in file /etc/apache2/sites-available/wordpress.conf from none to da6872
+I, [2025-05-11T14:10:24.885684 #26600]  INFO -- default-ubuntu-2004:     --- /etc/apache2/sites-available/wordpress.conf	2025-05-11 19:10:23.011480967 +0000
+I, [2025-05-11T14:10:24.885773 #26600]  INFO -- default-ubuntu-2004:     +++ /etc/apache2/sites-available/.chef-wordpress20250511-11753-dnrklr.conf	2025-05-11 19:10:23.011480967 +0000
+I, [2025-05-11T14:10:24.885937 #26600]  INFO -- default-ubuntu-2004:     @@ -1,12 +1,24 @@
+I, [2025-05-11T14:10:24.886051 #26600]  INFO -- default-ubuntu-2004:     +<VirtualHost *:80>
+I, [2025-05-11T14:10:24.886153 #26600]  INFO -- default-ubuntu-2004:     +  ServerAdmin webmaster@localhost
+I, [2025-05-11T14:10:24.886264 #26600]  INFO -- default-ubuntu-2004:     +  DocumentRoot /var/www/html
+I, [2025-05-11T14:10:24.886333 #26600]  INFO -- default-ubuntu-2004:     +
+I, [2025-05-11T14:10:24.887670 #26600]  INFO -- default-ubuntu-2004:     +  <Directory /var/www/html>
+I, [2025-05-11T14:10:24.887818 #26600]  INFO -- default-ubuntu-2004:     +    Options Indexes FollowSymLinks
+I, [2025-05-11T14:10:24.888005 #26600]  INFO -- default-ubuntu-2004:     +    Require all granted
+I, [2025-05-11T14:10:24.888155 #26600]  INFO -- default-ubuntu-2004:     +  </Directory>
+I, [2025-05-11T14:10:24.888287 #26600]  INFO -- default-ubuntu-2004:     +
+I, [2025-05-11T14:10:24.888417 #26600]  INFO -- default-ubuntu-2004:     +  ErrorLog ${APACHE_LOG_DIR}/error.log
+I, [2025-05-11T14:10:24.888597 #26600]  INFO -- default-ubuntu-2004:     +  CustomLog ${APACHE_LOG_DIR}/access.log combined
+I, [2025-05-11T14:10:24.890074 #26600]  INFO -- default-ubuntu-2004:     +</VirtualHost>
+I, [2025-05-11T14:10:24.890902 #26600]  INFO -- default-ubuntu-2004:   * link[/etc/apache2/sites-enabled/wordpress.conf] action create
+I, [2025-05-11T14:10:24.891940 #26600]  INFO -- default-ubuntu-2004:     - create symlink at /etc/apache2/sites-enabled/wordpress.conf to /etc/apache2/sites-available/wordpress.conf
+I, [2025-05-11T14:10:24.903047 #26600]  INFO -- default-ubuntu-2004: Recipe: wordpress::php
+I, [2025-05-11T14:10:39.228698 #26600]  INFO -- default-ubuntu-2004:   * apt_package[php] action install
+I, [2025-05-11T14:10:39.228970 #26600]  INFO -- default-ubuntu-2004:     - install version 2:7.4+75 of package php
+I, [2025-05-11T14:10:42.711679 #26600]  INFO -- default-ubuntu-2004:   * apt_package[php-mysql] action install
+I, [2025-05-11T14:10:42.711844 #26600]  INFO -- default-ubuntu-2004:     - install version 2:7.4+75 of package php-mysql
+I, [2025-05-11T14:10:44.320306 #26600]  INFO -- default-ubuntu-2004:   * apt_package[libapache2-mod-php] action install
+I, [2025-05-11T14:10:44.320595 #26600]  INFO -- default-ubuntu-2004:     - install version 2:7.4+75 of package libapache2-mod-php
+I, [2025-05-11T14:10:45.672683 #26600]  INFO -- default-ubuntu-2004:   * apt_package[php-cli] action install
+I, [2025-05-11T14:10:45.672845 #26600]  INFO -- default-ubuntu-2004:     - install version 2:7.4+75 of package php-cli
+I, [2025-05-11T14:10:48.273043 #26600]  INFO -- default-ubuntu-2004:   * apt_package[php-curl] action install
+I, [2025-05-11T14:10:48.273340 #26600]  INFO -- default-ubuntu-2004:     - install version 2:7.4+75 of package php-curl
+I, [2025-05-11T14:10:55.351176 #26600]  INFO -- default-ubuntu-2004:   * apt_package[php-gd] action install
+I, [2025-05-11T14:10:55.351485 #26600]  INFO -- default-ubuntu-2004:     - install version 2:7.4+75 of package php-gd
+I, [2025-05-11T14:10:58.814992 #26600]  INFO -- default-ubuntu-2004:   * apt_package[php-mbstring] action install
+I, [2025-05-11T14:10:58.815281 #26600]  INFO -- default-ubuntu-2004:     - install version 2:7.4+75 of package php-mbstring
+I, [2025-05-11T14:11:03.179148 #26600]  INFO -- default-ubuntu-2004:   * apt_package[php-xml] action install
+I, [2025-05-11T14:11:03.179340 #26600]  INFO -- default-ubuntu-2004:     - install version 2:7.4+75 of package php-xml
+I, [2025-05-11T14:11:05.937564 #26600]  INFO -- default-ubuntu-2004:   * apt_package[php-xmlrpc] action install
+I, [2025-05-11T14:11:05.937918 #26600]  INFO -- default-ubuntu-2004:     - install version 2:7.4+75 of package php-xmlrpc
+I, [2025-05-11T14:11:06.094766 #26600]  INFO -- default-ubuntu-2004:   * service[apache2] action restart
+I, [2025-05-11T14:11:06.095054 #26600]  INFO -- default-ubuntu-2004:     - restart service service[apache2]
+I, [2025-05-11T14:11:06.095303 #26600]  INFO -- default-ubuntu-2004: Recipe: wordpress::mysql
+I, [2025-05-11T14:11:52.722597 #26600]  INFO -- default-ubuntu-2004:   * apt_package[mysql-server] action install
+I, [2025-05-11T14:11:52.723228 #26600]  INFO -- default-ubuntu-2004:     - install version 8.0.42-0ubuntu0.20.04.1 of package mysql-server
+I, [2025-05-11T14:11:52.755677 #26600]  INFO -- default-ubuntu-2004:   * service[mysql] action enable (up to date)
+I, [2025-05-11T14:11:52.777674 #26600]  INFO -- default-ubuntu-2004:   * service[mysql] action start (up to date)
+I, [2025-05-11T14:11:52.883248 #26600]  INFO -- default-ubuntu-2004:   * execute[create-wordpress-db] action run
+I, [2025-05-11T14:11:52.883741 #26600]  INFO -- default-ubuntu-2004:     - execute     mysql -u root -e "CREATE DATABASE IF NOT EXISTS wordpress;"
+I, [2025-05-11T14:11:52.883926 #26600]  INFO -- default-ubuntu-2004:  mysql -u root -e "CREATE USER IF NOT EXISTS 'wpuser'@'localhost' IDENTIFIED BY 'wppassword';"
+I, [2025-05-11T14:11:52.884029 #26600]  INFO -- default-ubuntu-2004:  mysql -u root -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser'@'localhost';"
+I, [2025-05-11T14:11:52.884279 #26600]  INFO -- default-ubuntu-2004:  mysql -u root -e "FLUSH PRIVILEGES;"
+I, [2025-05-11T14:11:52.884447 #26600]  INFO -- default-ubuntu-2004:   
+I, [2025-05-11T14:11:52.885648 #26600]  INFO -- default-ubuntu-2004: Recipe: wordpress::wordpress
+I, [2025-05-11T14:11:59.012555 #26600]  INFO -- default-ubuntu-2004:   * remote_file[/tmp/wordpress.tar.gz] action create
+I, [2025-05-11T14:11:59.221634 #26600]  INFO -- default-ubuntu-2004:     - create new file /tmp/wordpress.tar.gz
+I, [2025-05-11T14:11:59.222638 #26600]  INFO -- default-ubuntu-2004:     - update content in file /tmp/wordpress.tar.gz from none to 3c654d
+I, [2025-05-11T14:11:59.234564 #26600]  INFO -- default-ubuntu-2004:     (file sizes exceed 10000000 bytes, diff output suppressed)
+I, [2025-05-11T14:12:00.406498 #26600]  INFO -- default-ubuntu-2004:   * bash[extract-wordpress] action run
+I, [2025-05-11T14:12:00.408683 #26600]  INFO -- default-ubuntu-2004:     - execute "bash" 
+I, [2025-05-11T14:12:00.453670 #26600]  INFO -- default-ubuntu-2004:   * file[/var/www/html/index.html] action delete
+I, [2025-05-11T14:12:00.455802 #26600]  INFO -- default-ubuntu-2004:     - delete file /var/www/html/index.html
+I, [2025-05-11T14:12:00.481156 #26600]  INFO -- default-ubuntu-2004:   * template[/var/www/html/wp-config.php] action create
+I, [2025-05-11T14:12:00.506106 #26600]  INFO -- default-ubuntu-2004:     - create new file /var/www/html/wp-config.php
+I, [2025-05-11T14:12:00.506629 #26600]  INFO -- default-ubuntu-2004:     - update content in file /var/www/html/wp-config.php from none to 400e95
+I, [2025-05-11T14:12:00.507157 #26600]  INFO -- default-ubuntu-2004:     --- /var/www/html/wp-config.php	2025-05-11 19:11:58.557152923 +0000
+I, [2025-05-11T14:12:00.507889 #26600]  INFO -- default-ubuntu-2004:     +++ /var/www/html/.chef-wp-config20250511-11753-3g8h3z.php	2025-05-11 19:11:58.553150922 +0000
+I, [2025-05-11T14:12:00.508351 #26600]  INFO -- default-ubuntu-2004:     @@ -1,18 +1,36 @@
+I, [2025-05-11T14:12:00.508821 #26600]  INFO -- default-ubuntu-2004:     +<?php
+I, [2025-05-11T14:12:00.509166 #26600]  INFO -- default-ubuntu-2004:     +define('DB_NAME', 'wordpress');
+I, [2025-05-11T14:12:00.509487 #26600]  INFO -- default-ubuntu-2004:     +define('DB_USER', 'wpuser');
+I, [2025-05-11T14:12:00.509925 #26600]  INFO -- default-ubuntu-2004:     +define('DB_PASSWORD', 'wppassword');
+I, [2025-05-11T14:12:00.510286 #26600]  INFO -- default-ubuntu-2004:     +define('DB_HOST', 'localhost');
+I, [2025-05-11T14:12:00.510823 #26600]  INFO -- default-ubuntu-2004:     +
+I, [2025-05-11T14:12:00.511288 #26600]  INFO -- default-ubuntu-2004:     +define('DB_CHARSET', 'utf8');
+I, [2025-05-11T14:12:00.511862 #26600]  INFO -- default-ubuntu-2004:     +define('DB_COLLATE', '');
+I, [2025-05-11T14:12:00.512403 #26600]  INFO -- default-ubuntu-2004:     +
+I, [2025-05-11T14:12:00.512937 #26600]  INFO -- default-ubuntu-2004:     +$table_prefix = 'wp_';
+I, [2025-05-11T14:12:00.513354 #26600]  INFO -- default-ubuntu-2004:     +
+I, [2025-05-11T14:12:00.513718 #26600]  INFO -- default-ubuntu-2004:     +define('WP_DEBUG', false);
+I, [2025-05-11T14:12:00.514099 #26600]  INFO -- default-ubuntu-2004:     +
+I, [2025-05-11T14:12:00.514547 #26600]  INFO -- default-ubuntu-2004:     +if ( !defined('ABSPATH') )
+I, [2025-05-11T14:12:00.514929 #26600]  INFO -- default-ubuntu-2004:     +  define('ABSPATH', dirname(__FILE__) . '/');
+I, [2025-05-11T14:12:00.515398 #26600]  INFO -- default-ubuntu-2004:     +
+I, [2025-05-11T14:12:00.515900 #26600]  INFO -- default-ubuntu-2004:     +require_once(ABSPATH . 'wp-settings.php');
+I, [2025-05-11T14:12:00.526794 #26600]  INFO -- default-ubuntu-2004:     +?>
+I, [2025-05-11T14:12:01.588796 #26600]  INFO -- default-ubuntu-2004:   * remote_file[/usr/local/bin/wp] action create
+I, [2025-05-11T14:12:01.882046 #26600]  INFO -- default-ubuntu-2004:     - create new file /usr/local/bin/wp
+I, [2025-05-11T14:12:01.894637 #26600]  INFO -- default-ubuntu-2004:     - update content in file /usr/local/bin/wp from none to ce34dd
+I, [2025-05-11T14:12:01.896910 #26600]  INFO -- default-ubuntu-2004:     (new content is binary, diff output suppressed)
+I, [2025-05-11T14:12:01.909359 #26600]  INFO -- default-ubuntu-2004:     - change mode from '' to '0755'
+I, [2025-05-11T14:12:10.473387 #26600]  INFO -- default-ubuntu-2004:   * bash[install-wordpress-core] action run
+I, [2025-05-11T14:12:10.473729 #26600]  INFO -- default-ubuntu-2004:     - execute "bash" 
+I, [2025-05-11T14:12:10.474811 #26600]  INFO -- default-ubuntu-2004:   * cookbook_file[/tmp/index-unir.html] action create
+I, [2025-05-11T14:12:10.475824 #26600]  INFO -- default-ubuntu-2004:     - create new file /tmp/index-unir.html
+I, [2025-05-11T14:12:10.476039 #26600]  INFO -- default-ubuntu-2004:     - update content in file /tmp/index-unir.html from none to 65703b
+I, [2025-05-11T14:12:10.476318 #26600]  INFO -- default-ubuntu-2004:     --- /tmp/index-unir.html	2025-05-11 19:12:08.554148925 +0000
+I, [2025-05-11T14:12:10.476599 #26600]  INFO -- default-ubuntu-2004:     +++ /tmp/.chef-index-unir20250511-11753-xf9kho.html	2025-05-11 19:12:08.554148925 +0000
+I, [2025-05-11T14:12:10.476856 #26600]  INFO -- default-ubuntu-2004:     @@ -1,47 +1,94 @@
+I, [2025-05-11T14:12:10.477054 #26600]  INFO -- default-ubuntu-2004:     +<h1 style="color: #0073aa;">UNIR - Curso Herramientas de Automatización de Despliegues</h1>
+I, [2025-05-11T14:12:10.477299 #26600]  INFO -- default-ubuntu-2004:     +
+I, [2025-05-11T14:12:10.477571 #26600]  INFO -- default-ubuntu-2004:     +<h2>Integrantes del equipo:</h2>
+I, [2025-05-11T14:12:10.477867 #26600]  INFO -- default-ubuntu-2004:     +<ul>
+I, [2025-05-11T14:12:10.478051 #26600]  INFO -- default-ubuntu-2004:     +  <li>Juan Angel Ruiz Reyes</li>
+I, [2025-05-11T14:12:10.480513 #26600]  INFO -- default-ubuntu-2004:     +  <li>Jhon Javier Cardona Munoz</li>
+I, [2025-05-11T14:12:10.480814 #26600]  INFO -- default-ubuntu-2004:     +  <li>Fidel Herney Palacios Cuacialpud</li>
+I, [2025-05-11T14:12:10.481019 #26600]  INFO -- default-ubuntu-2004:     +</ul>
+I, [2025-05-11T14:12:10.481302 #26600]  INFO -- default-ubuntu-2004:     +
+I, [2025-05-11T14:12:10.481585 #26600]  INFO -- default-ubuntu-2004:     +<p>Este contenido ha sido generado automáticamente para validar la correcta configuración del entorno de automatización con <strong>Vagrant</strong>, <strong>Chef</strong> y <strong>Test Kitchen</strong>. Se ha realizado la instalación y configuración completa de <strong>WordPress</strong> sobre una máquina virtual Ubuntu 20.04, gestionada mediante Vagrant.</p>
+I, [2025-05-11T14:12:10.481798 #26600]  INFO -- default-ubuntu-2004:     +
+I, [2025-05-11T14:12:10.481969 #26600]  INFO -- default-ubuntu-2004:     +<h3>Resumen de criterios cumplidos:</h3>
+I, [2025-05-11T14:12:10.482081 #26600]  INFO -- default-ubuntu-2004:     +<ul>
+I, [2025-05-11T14:12:10.482202 #26600]  INFO -- default-ubuntu-2004:     +  <li><strong>Criterio 1:</strong> Apache instalado y accesible desde el navegador.</li>
+I, [2025-05-11T14:12:10.482346 #26600]  INFO -- default-ubuntu-2004:     +  <li><strong>Criterio 2:</strong> WordPress desplegado correctamente.</li>
+I, [2025-05-11T14:12:10.482560 #26600]  INFO -- default-ubuntu-2004:     +  <li><strong>Criterio 3:</strong> WordPress configurado mostrando directamente el primer blog.</li>
+I, [2025-05-11T14:12:10.482703 #26600]  INFO -- default-ubuntu-2004:     +  <li><strong>Criterio 4:</strong> 5 pruebas unitarias implementadas y exitosas con ChefSpec.</li>
+I, [2025-05-11T14:12:10.482829 #26600]  INFO -- default-ubuntu-2004:     +  <li><strong>Criterio 5:</strong> 5 pruebas de integración exitosas ejecutadas con Test Kitchen.</li>
+I, [2025-05-11T14:12:10.483037 #26600]  INFO -- default-ubuntu-2004:     +</ul>
+I, [2025-05-11T14:12:10.483183 #26600]  INFO -- default-ubuntu-2004:     +
+I, [2025-05-11T14:12:10.483418 #26600]  INFO -- default-ubuntu-2004:     +<h3>Estructura final del proyecto:</h3>
+I, [2025-05-11T14:12:10.483548 #26600]  INFO -- default-ubuntu-2004:     +<pre style="background: #fff; padding: 10px; border: 1px solid #ccc;">
+I, [2025-05-11T14:12:10.483756 #26600]  INFO -- default-ubuntu-2004:     +ACTIVIDAD_02/
+I, [2025-05-11T14:12:10.484008 #26600]  INFO -- default-ubuntu-2004:     +├── chef-repo/
+I, [2025-05-11T14:12:10.484281 #26600]  INFO -- default-ubuntu-2004:     +│   ├── cookbooks/
+I, [2025-05-11T14:12:10.484560 #26600]  INFO -- default-ubuntu-2004:     +│   │   └── wordpress/
+I, [2025-05-11T14:12:10.484692 #26600]  INFO -- default-ubuntu-2004:     +│   │       ├── attributes/
+I, [2025-05-11T14:12:10.484815 #26600]  INFO -- default-ubuntu-2004:     +│   │       │   └── default.rb
+I, [2025-05-11T14:12:10.484955 #26600]  INFO -- default-ubuntu-2004:     +│   │       ├── files/
+I, [2025-05-11T14:12:10.485093 #26600]  INFO -- default-ubuntu-2004:     +│   │       │   └── index-unir.html
+I, [2025-05-11T14:12:10.485236 #26600]  INFO -- default-ubuntu-2004:     +│   │       ├── recipes/
+I, [2025-05-11T14:12:10.485377 #26600]  INFO -- default-ubuntu-2004:     +│   │       │   ├── apache.rb
+I, [2025-05-11T14:12:10.485727 #26600]  INFO -- default-ubuntu-2004:     +│   │       │   ├── default.rb
+I, [2025-05-11T14:12:10.485987 #26600]  INFO -- default-ubuntu-2004:     +│   │       │   ├── mysql.rb
+I, [2025-05-11T14:12:10.486173 #26600]  INFO -- default-ubuntu-2004:     +│   │       │   ├── php.rb
+I, [2025-05-11T14:12:10.486317 #26600]  INFO -- default-ubuntu-2004:     +│   │       │   └── wordpress.rb        
+I, [2025-05-11T14:12:10.486443 #26600]  INFO -- default-ubuntu-2004:     +│   │       ├── spec/unit/recipes/
+I, [2025-05-11T14:12:10.486629 #26600]  INFO -- default-ubuntu-2004:     +│   │       │   ├── default_spec.rb
+I, [2025-05-11T14:12:10.486831 #26600]  INFO -- default-ubuntu-2004:     +│   │       │   └── spec_helper.rb
+I, [2025-05-11T14:12:10.486981 #26600]  INFO -- default-ubuntu-2004:     +│   │       ├── templates/
+I, [2025-05-11T14:12:10.487191 #26600]  INFO -- default-ubuntu-2004:     +│   │       │   ├── virtual-hosts.conf.erb
+I, [2025-05-11T14:12:10.487389 #26600]  INFO -- default-ubuntu-2004:     +│   │       │   └── wp-config.php.erb
+I, [2025-05-11T14:12:10.494337 #26600]  INFO -- default-ubuntu-2004:     +│   │       └── test/integration/default/
+I, [2025-05-11T14:12:10.494623 #26600]  INFO -- default-ubuntu-2004:     +│   │           └── default_test.rb
+I, [2025-05-11T14:12:10.494916 #26600]  INFO -- default-ubuntu-2004:     +│   └── kitchen.yml
+I, [2025-05-11T14:12:10.495179 #26600]  INFO -- default-ubuntu-2004:     +└── Vagrantfile
+I, [2025-05-11T14:12:10.496558 #26600]  INFO -- default-ubuntu-2004:     +</pre>
+I, [2025-05-11T14:12:10.497141 #26600]  INFO -- default-ubuntu-2004:     - change mode from '' to '0644'
+I, [2025-05-11T14:12:10.497894 #26600]  INFO -- default-ubuntu-2004:     - change owner from '' to 'root'
+I, [2025-05-11T14:12:10.498051 #26600]  INFO -- default-ubuntu-2004:     - change group from '' to 'root'
+I, [2025-05-11T14:12:11.192070 #26600]  INFO -- default-ubuntu-2004:   * bash[create-home-page] action run
+I, [2025-05-11T14:12:11.192366 #26600]  INFO -- default-ubuntu-2004:     - execute "bash" 
+I, [2025-05-11T14:12:11.995414 #26600]  INFO -- default-ubuntu-2004:   * bash[set-home-page] action run
+I, [2025-05-11T14:12:11.995703 #26600]  INFO -- default-ubuntu-2004:     - execute "bash" 
+I, [2025-05-11T14:12:11.996438 #26600]  INFO -- default-ubuntu-2004: Recipe: wordpress::php
+I, [2025-05-11T14:12:12.194881 #26600]  INFO -- default-ubuntu-2004:   * service[apache2] action restart
+I, [2025-05-11T14:12:12.195173 #26600]  INFO -- default-ubuntu-2004:     - restart service service[apache2]
+I, [2025-05-11T14:12:12.299713 #26600]  INFO -- default-ubuntu-2004: 
+I, [2025-05-11T14:12:12.300425 #26600]  INFO -- default-ubuntu-2004: Running handlers:
+I, [2025-05-11T14:12:12.301100 #26600]  INFO -- default-ubuntu-2004: Running handlers complete
+I, [2025-05-11T14:12:12.301780 #26600]  INFO -- default-ubuntu-2004: Infra Phase complete, 29/34 resources updated in 02 minutes 06 seconds
+I, [2025-05-11T14:12:12.334442 #26600]  INFO -- default-ubuntu-2004: Downloading files from <default-ubuntu-2004>
+I, [2025-05-11T14:12:12.345115 #26600]  INFO -- default-ubuntu-2004: Finished converging <default-ubuntu-2004> (2m30.93s).
+I, [2025-05-11T14:12:12.345748 #26600]  INFO -- default-ubuntu-2004: -----> Setting up <default-ubuntu-2004>...
+I, [2025-05-11T14:12:12.356697 #26600]  INFO -- default-ubuntu-2004: Finished setting up <default-ubuntu-2004> (0m0.00s).
+I, [2025-05-11T14:12:12.357193 #26600]  INFO -- default-ubuntu-2004: -----> Verifying <default-ubuntu-2004>...
+I, [2025-05-11T14:12:17.339716 #26600]  INFO -- default-ubuntu-2004: Loaded tests from {:path=>"C:.Users.jhonj.UNIR.HerramientasAutomatizacionDespliegues.Entregas.chef-wordpress-act2.Actividad_02.chef-repo.cookbooks.wordpress.test.integration.default"} 
+I, [2025-05-11T14:12:19.224646 #26600]  INFO -- default-ubuntu-2004: Finished verifying <default-ubuntu-2004> (0m6.85s).
+I, [2025-05-11T14:12:19.235022 #26600]  INFO -- default-ubuntu-2004: -----> Destroying <default-ubuntu-2004>...
+I, [2025-05-11T14:12:25.459686 #26600]  INFO -- default-ubuntu-2004: ==> default: Forcing shutdown of VM...
+I, [2025-05-11T14:12:26.912195 #26600]  INFO -- default-ubuntu-2004: ==> default: Destroying VM and associated drives...
+I, [2025-05-11T14:12:27.697467 #26600]  INFO -- default-ubuntu-2004: Vagrant instance <default-ubuntu-2004> destroyed.
+I, [2025-05-11T14:12:27.706541 #26600]  INFO -- default-ubuntu-2004: Finished destroying <default-ubuntu-2004> (0m8.46s).
+I, [2025-05-11T14:12:27.708991 #26600]  INFO -- default-ubuntu-2004: Finished testing <default-ubuntu-2004> (4m6.75s).

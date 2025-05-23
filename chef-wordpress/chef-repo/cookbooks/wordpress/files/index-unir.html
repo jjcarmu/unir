@@ -1,0 +1,47 @@
+<h1 style="color: #0073aa;">UNIR - Curso Herramientas de Automatización de Despliegues</h1>
+
+<h2>Integrantes del equipo:</h2>
+<ul>
+  <li>Juan Angel Ruiz Reyes</li>
+  <li>Jhon Javier Cardona Munoz</li>
+  <li>Fidel Herney Palacios Cuacialpud</li>
+</ul>
+
+<p>Este contenido ha sido generado automáticamente para validar la correcta configuración del entorno de automatización con <strong>Vagrant</strong>, <strong>Chef</strong> y <strong>Test Kitchen</strong>. Se ha realizado la instalación y configuración completa de <strong>WordPress</strong> sobre una máquina virtual Ubuntu 20.04, gestionada mediante Vagrant.</p>
+
+<h3>Resumen de criterios cumplidos:</h3>
+<ul>
+  <li><strong>Criterio 1:</strong> Apache instalado y accesible desde el navegador.</li>
+  <li><strong>Criterio 2:</strong> WordPress desplegado correctamente.</li>
+  <li><strong>Criterio 3:</strong> WordPress configurado mostrando directamente el primer blog.</li>
+  <li><strong>Criterio 4:</strong> 5 pruebas unitarias implementadas y exitosas con ChefSpec.</li>
+  <li><strong>Criterio 5:</strong> 5 pruebas de integración exitosas ejecutadas con Test Kitchen.</li>
+</ul>
+
+<h3>Estructura final del proyecto:</h3>
+<pre style="background: #fff; padding: 10px; border: 1px solid #ccc;">
+ACTIVIDAD_02/
+├── chef-repo/
+│   ├── cookbooks/
+│   │   └── wordpress/
+│   │       ├── attributes/
+│   │       │   └── default.rb
+│   │       ├── files/
+│   │       │   └── index-unir.html
+│   │       ├── recipes/
+│   │       │   ├── apache.rb
+│   │       │   ├── default.rb
+│   │       │   ├── mysql.rb
+│   │       │   ├── php.rb
+│   │       │   └── wordpress.rb        
+│   │       ├── spec/unit/recipes/
+│   │       │   ├── default_spec.rb
+│   │       │   └── spec_helper.rb
+│   │       ├── templates/
+│   │       │   ├── virtual-hosts.conf.erb
+│   │       │   └── wp-config.php.erb
+│   │       └── test/integration/default/
+│   │           └── default_test.rb
+│   └── kitchen.yml
+└── Vagrantfile
+</pre>

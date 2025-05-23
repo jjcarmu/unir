@@ -1,0 +1,117 @@
+{
+  "variables": {
+    "aws_region": "us-west-2",
+    "ami_base": "ami-07182692443fccde1",
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu",
+    "ami_name": "node-nginx-actividad1-{{timestamp}}",
+    "ami_description": "AMI with Nginx and Nodejs Application",
+    "tags": "Name=NODE-NGINX-AMI,Environment=Development",
+    "deployment_script": "deploy.sh",
+    "ec2_instance_type": "t2.micro",
+    "ec2_keypair_name": "jjcarmu",
+    "ec2_security_group_ids": "sg-0397d9dd926bd77ba",
+    "subnet_id": "subnet-1de00065"
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "{{ user `aws_region` }}",
+      "source_ami": "{{ user `ami_base` }}",
+      "instance_type": "{{ user `instance_type` }}",
+      "ssh_username": "{{ user `ssh_username` }}",
+      "ami_name": "{{ user `ami_name` }}",
+      "ami_description": "{{ user `ami_description` }}",
+      "encrypt_boot": false
+    },
+    {
+        "type": "azure-arm",
+        "client_id": "{{user `azure_client_id`}}",
+        "client_secret": "{{user `azure_client_secret`}}",
+        "tenant_id": "{{user `azure_tenant_id`}}",
+        "subscription_id": "{{user `azure_subscription_id`}}",
+        "managed_image_resource_group_name": "packer-images",
+        "managed_image_name": "node-nginx-azure-{{timestamp}}",
+        "os_type": "Linux",
+        "image_publisher": "Canonical",
+        "image_offer": "UbuntuServer",
+        "image_sku": "20_04-lts",
+        "location": "{{user `azure_location`}}",
+        "vm_size": "Standard_B1s"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sudo apt-get update",
+        "sudo apt-get upgrade -y"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo apt-get install -y curl wget gnupg git apt-transport-https ca-certificates"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -",
+        "echo 'deb https://dl.yarnpkg.com/debian stable main' | sudo tee /etc/apt/sources.list.d/yarn.list"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -",
+        "sudo apt install -y nodejs",
+        "node -v"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo apt install -y nginx",
+        "sudo systemctl enable nginx",
+        "sudo rm -rf /etc/nginx/sites-enabled/default",
+        "echo 'server {\n  listen 80;\n  location / {\n    proxy_pass http://localhost:3000;\n    proxy_http_version 1.1;\n    proxy_set_header Upgrade $http_upgrade;\n    proxy_set_header Connection \"upgrade\";\n    proxy_cache_bypass $http_upgrade;\n  }\n}' | sudo tee /etc/nginx/sites-available/node-app",
+        "sudo ln -s /etc/nginx/sites-available/node-app /etc/nginx/sites-enabled/",
+        "sudo nginx -t",
+        "sudo systemctl daemon-reload",
+        "sudo systemctl restart nginx"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "mkdir -p /home/ubuntu/app",
+        "sudo chown -R ubuntu:ubuntu /home/ubuntu/app",
+        "echo 'const express = require(\"express\");\nconst app = express();\napp.get(\"/\", (req, res) => {\n  res.send(\"Packer - Actividad1 - Jhon Javier Cardona Muñoz ¡Hola desde Node.js y Nginx!\");\n});\napp.listen(3000);' | sudo tee /home/ubuntu/app/app.js",
+        "cd /home/ubuntu/app && npm install express",
+        "echo '[Unit]\nDescription=Node.js App\nAfter=network.target\n\n[Service]\nUser=ubuntu\nWorkingDirectory=/home/ubuntu/app\nExecStart=/usr/bin/node /home/ubuntu/app/app.js\nRestart=always\n\n[Install]\nWantedBy=multi-user.target' | sudo tee /etc/systemd/system/node-app.service",
+        "sudo systemctl enable node-app",
+        "sudo systemctl start node-app"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "echo 'Node and Nginx Stack installed successfully!' "
+      ]
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "manifest",
+        "output": "manifest.json",
+        "strip_path": true
+      },
+      {
+        "type": "shell-local",
+        "command": "{{ user `deployment_script` }} {{ user `aws_region` }} {{ user `ec2_instance_type` }} {{ user `ec2_keypair_name` }} {{ user `ec2_security_group_ids` }} {{ user `subnet_id` }}"
+      }
+    ]
+  ]
+}

@@ -1,0 +1,5 @@
+default['wordpress']['web_root'] = '/var/www/html'
+default['wordpress']['db_name'] = 'wordpress'
+default['wordpress']['db_user'] = 'wpuser'
+default['wordpress']['db_password'] = 'wppassword'
+default['wordpress']['db_host'] = 'localhost'
