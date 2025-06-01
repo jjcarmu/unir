@@ -39,7 +39,6 @@ if [ -z ${FILE} ]; then
    exit 1
 fi
 
-
 # Verificar si el archivo realmente existe
 if [ ! -f ${FILE} ]; then
   echo "Error: El archivo ${FILE} no existe."
@@ -67,46 +66,50 @@ while IFS='=' read -r key value || [ -n "$key" ]; do
   esac
 done < ${FILE}
 
-if [ -z ${USUARIO} ]
-then
+if [ -z ${USUARIO} ]; then
 ayuda "El usuario (-u) debe ser especificado"; exit 1
 fi
-if [ -z ${PASSWORD} ]
-then
+
+if [ -z ${PASSWORD} ]; then
 ayuda "La password (-p) debe ser especificada"; exit 1
 fi
-if [ -z ${PUERTO_MONGOD} ]
-then
+
+if [ -z ${PUERTO_MONGOD} ]; then
 PUERTO_MONGOD=27017
 fi
 
 # Preparar el repositorio (apt-get) de mongodb añadir su clave apt
+#Ubuntu 18.04 con version de mongo 4.4
+#curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+#echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+
+#Ubuntu 16.04 y 18.04
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 4B7C549A058F8B6B
 echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.2 multiverse" | tee /etc/apt/sources.list.d/mongodb.list
 
-if [[ -z "$(mongo --version 2> /dev/null | grep '4.2.1')" ]]
-then
+if [[ -z "$(mongo --version 2> /dev/null | grep '4.2.1')" ]]; then
 # Instalar paquetes comunes, servidor, shell, balanceador de shards y herramientas
-
-apt-get -y update \
-&& apt-get install -y \
-libcurl3 \
-mongodb-org=4.2.1 \
-mongodb-org-server=4.2.1 \
-mongodb-org-shell=4.2.1 \
-mongodb-org-mongos=4.2.1 \
-mongodb-org-tools=4.2.1 \
-&& rm -rf /var/lib/apt/lists/* \
-&& pkill -u mongodb || true \
-&& pkill -f mongod || true \
-&& rm -rf /var/lib/mongodb
+# Para ubuntu 18.04, se agrega la libreria libcurl3 \
+   apt-get -y update \
+   && apt-get install -y \
+   libcurl3 \
+   mongodb-org=4.2.1 \
+   mongodb-org-server=4.2.1 \
+   mongodb-org-shell=4.2.1 \
+   mongodb-org-mongos=4.2.1 \
+   mongodb-org-tools=4.2.1 \
+   #Se comnenta por estaba generando problemas y se tenia ejecutar 2 veces el Script (Causa de de la version del Ubuntu)
+   #&& rm -rf /var/lib/apt/lists/* \
+   #&& pkill -u mongodb || true \
+   #&& pkill -f mongod || true \
+   #&& rm -rf /var/lib/mongodb
 fi
-# Crear las carpetas de logs y datos con sus permisos
 
+# Crear las carpetas de logs y datos con sus permisos
 [[ -d "/datos/bd" ]] || mkdir -p -m 755 "/datos/bd"
 [[ -d "/datos/log" ]] || mkdir -p -m 755 "/datos/log"
-# Establecer el dueño y el grupo de las carpetas db y log
 
+# Establecer el dueño y el grupo de las carpetas db y log
 chown mongodb /datos/log /datos/bd
 chgrp mongodb /datos/log /datos/bd
 
@@ -132,7 +135,6 @@ MONGOD_CONF
 ) > /etc/mongod.conf
 
 # Reiniciar el servicio de mongod para aplicar la nueva configuracion
-
 systemctl restart mongod
 
 logger "Esperando a que mongod responda..."
