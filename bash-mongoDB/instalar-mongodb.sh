@@ -6,7 +6,7 @@ logger "Arrancando instalacion y configuracion de MongoDB"
 USO="Uso : instalar-mongodb.sh -f config.ini
    Ejemplo:
    instalar-mongodb.sh -f config.ini
-   Contenido Archivo config.ini :
+   Ejemplo Contenido Archivo de configuracion :
       user=administrador
       password=secreto
       port=27017
@@ -20,21 +20,34 @@ echo ${1}
 fi
 }   
 
+#Gestionar los argumentos
+while getopts ":f:" OPCION
+do
+    case ${OPCION} in 
+        f)  FILE=$OPTARG
+            echo "Parametro ARCHIVO establecido con '${FILE}'";;
+        \?) ayuda "La opcion no existe : $OPTARG"; exit 1;;
+        :) ayuda "Falta el parametro para -$OPTARG"; exit 1;;
+        
+        esac
+done
+
 # Verificar si se pasó un archivo .ini como argumento
-if [ -z "$1" ]; then
-  #echo "Uso: $0 config.ini"
-  ayuda
-  exit 1
+if [ -z ${FILE} ]; then
+   echo "Error: Debe especificar un archivo de configuración con -f." 
+   ayuda
+   exit 1
 fi
+
 
 # Verificar si el archivo realmente existe
-if [ ! -f "$1" ]; then
-  echo "Error: El archivo '$1' no existe."
+if [ ! -f ${FILE} ]; then
+  echo "Error: El archivo ${FILE} no existe."
   ayuda
   exit 1
 fi
 
-echo "Leyendo archivo de configuración: $1"
+echo "Leyendo archivo de configuración: ${FILE}"
 while IFS='=' read -r key value || [ -n "$key" ]; do
   # Eliminar espacios y omitir comentarios o líneas vacías
   key=$(echo "$key" | xargs)
@@ -52,7 +65,7 @@ while IFS='=' read -r key value || [ -n "$key" ]; do
     echo "Parametro PUERTO_MONGOD establecido con '${PUERTO_MONGOD}'";;
     :) ayuda "Falta el parametro para -$OPTARG"; exit 1;; \?) ayuda "La opcion no existe : $OPTARG"; exit 1;;
   esac
-done < "$1"
+done < ${FILE}
 
 if [ -z ${USUARIO} ]
 then
@@ -67,12 +80,7 @@ then
 PUERTO_MONGOD=27017
 fi
 
-# Actualizando e instalando libcurl
-sudo apt-get update
-sudo apt-get install libcurl3 -y
-#sudo apt-get update
 # Preparar el repositorio (apt-get) de mongodb añadir su clave apt
-
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 4B7C549A058F8B6B
 echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.2 multiverse" | tee /etc/apt/sources.list.d/mongodb.list
 
@@ -82,6 +90,7 @@ then
 
 apt-get -y update \
 && apt-get install -y \
+libcurl3 \
 mongodb-org=4.2.1 \
 mongodb-org-server=4.2.1 \
 mongodb-org-shell=4.2.1 \
