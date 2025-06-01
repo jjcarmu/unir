@@ -3,13 +3,13 @@
 set -e
 
 logger "Arrancando instalacion y configuracion de MongoDB"
-USO="Uso : install.sh config.ini
+USO="Uso : instalar-mongodb.sh -f config.ini
    Ejemplo:
-   install.sh config.ini
+   instalar-mongodb.sh -f config.ini
    Contenido Archivo config.ini :
-      u=usuario
-      p=password
-      n=numero de puerto (opcional)
+      user=administrador
+      password=secreto
+      port=27017
    "
 
 function ayuda() {
@@ -44,11 +44,11 @@ while IFS='=' read -r key value || [ -n "$key" ]; do
   [[ "$key" == \#* ]] && continue
   # Gestionar los argumentos 
   case "$key" in
-    u) USUARIO="$value"
+    user) USUARIO="$value"
     echo "Parametro USUARIO establecido con '${USUARIO}'";;
-    p) PASSWORD="$value" 
+    password) PASSWORD="$value" 
     echo "Parametro PASSWORD establecido";;
-    n) PUERTO_MONGOD="$value"
+    port) PUERTO_MONGOD="$value"
     echo "Parametro PUERTO_MONGOD establecido con '${PUERTO_MONGOD}'";;
     :) ayuda "Falta el parametro para -$OPTARG"; exit 1;; \?) ayuda "La opcion no existe : $OPTARG"; exit 1;;
   esac
