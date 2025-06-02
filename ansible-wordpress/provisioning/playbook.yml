@@ -3,6 +3,7 @@
   become: true
 
   tasks:
+    # PHP
     - name: Install PHP and required extensions
       apt:
         name:
@@ -16,3 +17,46 @@
       apt:
         name: apache2
         state: absent
+    # MySQL   
+    - name: Install Mysql
+      apt:
+        name:
+          - mysql-server
+          - python-mysqldb
+        state: present
+        update_cache: yes
+    - name: Generate new root password
+      command: openssl rand -hex 7 creates=/root/.my.cnf
+      register: mysql_new_root_pass
+    - name: Remove anonymous users
+      mysql_user: name="" state=absent
+      when: mysql_new_root_pass.changed
+    - name : Output new root password
+      debug: msg="New root password is {{mysql_new_root_pass.stdout}}" 
+      when: mysql_new_root_pass.changed
+    - name: Update root password
+      mysql_user: name=root host={{item}}
+        password={{mysql_new_root_pass.stdout}}
+      loop:
+        - "{{ansible_hostname}}"
+        - 127.0.0.1
+        - ::1
+        - localhost
+      when: mysql_new_root_pass.changed
+    - name: Create my.cnf
+      template: src=templates/mysql/my.cnf dest=/root/.my.cnf
+      when: mysql_new_root_pass.changed
+    - name: Remove test database
+      mysql_db:
+        name="test"
+        state=absent
+    # nginx
+    - name: Install nginx
+      apt:
+        name:
+          - nginx
+        state: present
+    - name: Start nginx
+      service: name=nginx state=started
+    - name: Create nginx config
+      template: src=templates/nginx/default dest=/etc/nginx/sites-available/default
