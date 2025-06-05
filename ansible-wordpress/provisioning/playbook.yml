@@ -15,7 +15,11 @@
         update_cache: yes
     - name: Remove apache2
       apt:
-        name: apache2
+        name: 
+          - apache2
+          - apache2-utils
+          - apache2.2-bin
+          - apache2-common
         state: absent
     # MySQL   
     - name: Install Mysql
@@ -60,3 +64,11 @@
       service: name=nginx state=started
     - name: Create nginx config
       template: src=templates/nginx/default dest=/etc/nginx/sites-available/default
+    #- name: Restart nginx
+    #  service: name=nginx state=restarted
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted
+    - name: Create nginx config
+      template: src=templates/nginx/default dest=/etc/nginx/sites-available/default
+      notify: restart nginx
