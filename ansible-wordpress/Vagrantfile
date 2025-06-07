@@ -3,9 +3,22 @@ Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/bionic64"
   config.vm.network "private_network", ip: "192.168.56.20"
    config.vm.provider "virtualbox" do |vb|
-     vb.memory = "1024"
+     vb.memory = "2048"
     end
   
+  config.vm.provision "shell", inline: <<-SHELL
+      sudo apt update
+      #sudo apt install -y software-properties-common
+      #sudo add-apt-repository --yes --update ppa:ansible/ansible
+      #sudo apt update
+      #sudo apt install -y ansible python3-pymysql
+
+      # Crear directorios necesarios para ansible-galaxy (para evitar errores)
+      #mkdir -p /root/.ansible/collections/ansible_collections
+      # Instalar la colección community.mysql si no existe
+      #ansible-galaxy collection install community.mysql --force
+  SHELL
+
   config.vm.provision "ansible_local" do |ansible|
    ansible.playbook ="provisioning/playbook.yml"
    #ansible.inventory_path = "inventory"

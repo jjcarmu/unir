@@ -3,6 +3,12 @@
   become: true
 
   tasks:
+    # Tools
+    - name: Install required tools
+      apt: name={{item}} state=present
+      loop:
+        - unzip
+
     # PHP
     - name: Install PHP and required extensions
       apt:
@@ -13,6 +19,7 @@
           - php-xml
         state: present
         update_cache: yes
+
     - name: Remove apache2
       apt:
         name: 
@@ -21,6 +28,7 @@
           - apache2.2-bin
           - apache2-common
         state: absent
+    
     # MySQL   
     - name: Install Mysql
       apt:
@@ -29,15 +37,19 @@
           - python-mysqldb
         state: present
         update_cache: yes
+    
     - name: Generate new root password
       command: openssl rand -hex 7 creates=/root/.my.cnf
       register: mysql_new_root_pass
+    
     - name: Remove anonymous users
       mysql_user: name="" state=absent
       when: mysql_new_root_pass.changed
+    
     - name : Output new root password
       debug: msg="New root password is {{mysql_new_root_pass.stdout}}" 
       when: mysql_new_root_pass.changed
+    
     - name: Update root password
       mysql_user: name=root host={{item}}
         password={{mysql_new_root_pass.stdout}}
@@ -47,28 +59,52 @@
         - ::1
         - localhost
       when: mysql_new_root_pass.changed
+    
     - name: Create my.cnf
       template: src=templates/mysql/my.cnf dest=/root/.my.cnf
       when: mysql_new_root_pass.changed
+    
     - name: Remove test database
-      mysql_db:
-        name="test"
-        state=absent
+      mysql_db: name="test" state=absent
+    
     # nginx
     - name: Install nginx
       apt:
         name:
           - nginx
         state: present
+
     - name: Start nginx
       service: name=nginx state=started
-    - name: Create nginx config
-      template: src=templates/nginx/default dest=/etc/nginx/sites-available/default
-    #- name: Restart nginx
-    #  service: name=nginx state=restarted
-  handlers:
-    - name: restart nginx
-      service: name=nginx state=restarted
+
     - name: Create nginx config
       template: src=templates/nginx/default dest=/etc/nginx/sites-available/default
       notify: restart nginx
+
+    # Wordpress
+    - name: Copy wordpress.zip into tmp
+      copy: src=files/wordpress.zip dest=/tmp/wordpress.zip
+
+    - name: Create project folder
+      file:
+        path: /var/www/book.example.com
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: '0755'
+
+    - name: Unzip WordPress
+      unarchive: src=/tmp/wordpress.zip dest=/var/www/book.example.com copy=no creates=/var/www/book.example.com/wordpress/wp-settings.php 
+    
+    # Config Database Wordpress
+    - name: Create WordPress MySQL database
+      mysql_db: name=wordpress state=present
+
+    - name: Create WordPress MySQL user
+      mysql_user: name=wordpress host=localhost password=bananas priv=wordpress.*:ALL
+
+
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted
+    
