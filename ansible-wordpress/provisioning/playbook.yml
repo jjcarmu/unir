@@ -103,6 +103,10 @@
     - name: Create WordPress MySQL user
       mysql_user: name=wordpress host=localhost password=bananas priv=wordpress.*:ALL
 
+    # Config Init Wordpress
+    - name: Create wp-config
+      template: src=templates/wordpress/wp-config.php dest=/var/www/book.example.com/wp-config.php
+
 
   handlers:
     - name: restart nginx
