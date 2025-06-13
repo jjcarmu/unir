@@ -69,7 +69,7 @@
       "inline": [
         "mkdir -p /home/ubuntu/app",
         "sudo chown -R ubuntu:ubuntu /home/ubuntu/app",
-        "echo 'const express = require(\"express\");\nconst app = express();\napp.get(\"/\", (req, res) => {\n  res.send(\"Packer - Actividad1 - Jhon Javier Cardona Muñoz ¡Hola desde Node.js y Nginx!\");\n});\napp.listen(3000);' | sudo tee /home/ubuntu/app/app.js",
+        "echo 'const express = require(\"express\");\nconst app = express();\napp.get(\"/\", (req, res) => {\n  res.send(\"Terraform - Actividad2 - Jhon Javier Cardona Muñoz ¡Hola desde Node.js y Nginx!\");\n});\napp.listen(3000);' | sudo tee /home/ubuntu/app/app.js",
         "cd /home/ubuntu/app && npm install express",
         "echo '[Unit]\nDescription=Node.js App\nAfter=network.target\n\n[Service]\nUser=ubuntu\nWorkingDirectory=/home/ubuntu/app\nExecStart=/usr/bin/node /home/ubuntu/app/app.js\nRestart=always\n\n[Install]\nWantedBy=multi-user.target' | sudo tee /etc/systemd/system/node-app.service",
         "sudo systemctl enable node-app",

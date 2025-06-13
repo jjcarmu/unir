@@ -1,4 +1,4 @@
-# modules/loadbalancer/outputs.tf
+# modules/balanceador/outputs.tf
 output "lb_dns_name" {
   description = "DNS del balanceador de carga"
   value       = aws_lb.mean-lb.dns_name

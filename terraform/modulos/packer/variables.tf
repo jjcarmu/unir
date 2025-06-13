@@ -17,6 +17,11 @@ variable "instance_type" {
   description = "Tipo de instancia EC2"
 }
 
+variable "instance_name" {
+  default     = "node-nginx-actividad2"
+  description = "Nombre de la instancia"
+}
+
 
 ### CREDENCIALES
 variable "key_name" {
@@ -33,14 +38,5 @@ variable "aws_secret_key" {
 
 variable "aws_session_token" {
   description = "Token de sesión de AWS"
-}
-
-### ID AMI 
-variable "mongodb_ami" {
-  description = "ID de la imagen MongoDB"
-}
-
-variable "nodejs_ami" {
-  description = "ID de la imagen NodeJs"
 }
 
