@@ -38,8 +38,8 @@ module "instancia" {
 
 module "balanceador" {
   source              = "./modulos/balanceador"
-  public_subnet_ids   = module.network.public_subnet_ids
-  security_group_id   = module.network.security_group_id
-  vpc_id              = module.network.vpc_id
-  nodejs_instance_ids = module.instances.nodejs_instance_ids
+  public_subnet_ids   = module.red.public_subnet_ids
+  security_group_id   = module.red.security_group_id
+  vpc_id              = module.red.vpc_id
+  nodejs_instance_ids = module.instancia.nodejs_instance_ids
 }
