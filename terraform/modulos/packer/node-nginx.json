@@ -1,17 +1,14 @@
 {
   "variables": {
-    "aws_region": "us-west-2",
-    "ami_base": "ami-07182692443fccde1",
-    "instance_type": "t2.micro",
-    "ssh_username": "ubuntu",
-    "ami_name": "node-nginx-actividad1-{{timestamp}}",
+    "ami_name": "node-nginx-actividad2",
     "ami_description": "AMI with Nginx and Nodejs Application",
     "tags": "Name=NODE-NGINX-AMI,Environment=Development",
-    "deployment_script": "deploy.sh",
+    "aws_region": "us-east-1",
+    "ami_base": "ami-00ca0754cabb20b45",
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu",
     "ec2_instance_type": "t2.micro",
-    "ec2_keypair_name": "jjcarmu",
-    "ec2_security_group_ids": "sg-0397d9dd926bd77ba",
-    "subnet_id": "subnet-1de00065"
+    "ec2_keypair_name": "danger"
   },
   "builders": [
     {
@@ -23,21 +20,6 @@
       "ami_name": "{{ user `ami_name` }}",
       "ami_description": "{{ user `ami_description` }}",
       "encrypt_boot": false
-    },
-    {
-        "type": "azure-arm",
-        "client_id": "{{user `azure_client_id`}}",
-        "client_secret": "{{user `azure_client_secret`}}",
-        "tenant_id": "{{user `azure_tenant_id`}}",
-        "subscription_id": "{{user `azure_subscription_id`}}",
-        "managed_image_resource_group_name": "packer-images",
-        "managed_image_name": "node-nginx-azure-{{timestamp}}",
-        "os_type": "Linux",
-        "image_publisher": "Canonical",
-        "image_offer": "UbuntuServer",
-        "image_sku": "20_04-lts",
-        "location": "{{user `azure_location`}}",
-        "vm_size": "Standard_B1s"
     }
   ],
   "provisioners": [
@@ -100,18 +82,5 @@
         "echo 'Node and Nginx Stack installed successfully!' "
       ]
     }
-  ],
-  "post-processors": [
-    [
-      {
-        "type": "manifest",
-        "output": "manifest.json",
-        "strip_path": true
-      },
-      {
-        "type": "shell-local",
-        "command": "{{ user `deployment_script` }} {{ user `aws_region` }} {{ user `ec2_instance_type` }} {{ user `ec2_keypair_name` }} {{ user `ec2_security_group_ids` }} {{ user `subnet_id` }}"
-      }
-    ]
   ]
 }

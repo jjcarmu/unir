@@ -1,0 +1,8 @@
+{
+    "aws_region": "us-east-1",
+    "ami_base": "ami-00ca0754cabb20b45",
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu",
+    "ec2_instance_type": "t2.micro",
+    "ec2_keypair_name": "danger"
+}
