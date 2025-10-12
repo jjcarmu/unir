@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Mis Viajes</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f4f9; color: #333; margin: 0; padding: 20px; }
+        h1 { text-align: center; color: #4a4a4a; }
+        table { width: 80%; margin: 20px auto; border-collapse: collapse; box-shadow: 0 2px 15px rgba(0,0,0,0.1); background-color: white; }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #007bff; color: white; }
+        tr:hover { background-color: #f1f1f1; }
+        #error { color: red; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <h1>Contenedores - Actividad 1 - Jhon Javier Cardona Muñoz</h1>
+    <h1>Lista de Mis Viajes</h1>
+    <div id="viajes-container">
+        <table id="viajes-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Destino</th>
+                    <th>Fecha de Viaje</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los datos se insertarán aquí -->
+            </tbody>
+        </table>
+    </div>
+    <p id="error"></p>
+
+    <script>
+        // La URL del backend. Docker Compose nos permite usar el nombre del servicio 'backend'.
+        const apiUrl = 'http://localhost:8080'; // Apuntamos a localhost y al puerto mapeado en docker-compose.yml (8000)
+
+        // $(document).ready() es el equivalente de jQuery a 'DOMContentLoaded'
+        $(document).ready(function() {
+            $.ajax({
+                url: apiUrl,
+                method: 'GET',
+                dataType: 'json'
+            })
+            .done(function(data) {
+                const tbody = $('#viajes-table tbody');
+                if (data.records && data.records.length > 0) {
+                    $.each(data.records, function(index, viaje) {
+                        const row = `<tr>
+                                        <td>${viaje.id}</td>
+                                        <td>${viaje.destino}</td>
+                                        <td>${viaje.fecha_viaje}</td>
+                                        <td>${viaje.descripcion}</td>
+                                     </tr>`;
+                        tbody.append(row);
+                    });
+                } else {
+                    $('#viajes-container').hide();
+                    $('#error').text(data.message || 'No se encontraron viajes.');
+                }
+            })
+            .fail(function(jqXHR, textStatus, errorThrown) {
+                console.error('Error al obtener los datos:', textStatus, errorThrown);
+                $('#viajes-container').hide();
+                $('#error').text('No se pudo conectar con la API. Revisa la consola para más detalles.');
+            });
+        });
+    </script>
+
+</body>
+</html>
+    </script>
+
+</body>
+</html>
