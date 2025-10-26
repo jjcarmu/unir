@@ -16,8 +16,6 @@ services:
     ports:
       - "8000:80"
     networks:
-      # ------ ¡CAMBIO IMPORTANTE AQUÍ! ------
-      # Asignamos una IP estática dentro de la red app-network
       unir-app-network:
         ipv4_address: 172.20.0.11
     depends_on:
@@ -39,14 +37,11 @@ services:
     volumes:
       - db-pg-data:/var/lib/postgresql
     networks:
-      # ------ ¡CAMBIO IMPORTANTE AQUÍ! ------
-      # Asignamos una IP estática dentro de la red app-network
       unir-app-network:
         ipv4_address: 172.20.0.10
     ports:
       - "5232:5432"
     restart: unless-stopped
-# Red para la comunicación entre contenedores
 networks:
   unir-app-network:
     driver: bridge
@@ -54,7 +49,6 @@ networks:
       driver: default
       config:
         - subnet: 172.20.0.0/24
-# Volumen para persistir los datos de la base de datos
 volumes:
   db-pg-data:
     driver: local
