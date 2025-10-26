@@ -1,0 +1,50 @@
+version: '3.8'
+services:
+  web:
+    build: ./frontend/
+    container_name: unir_act2_web
+    ports:
+      - "8080:80"
+    networks:
+      - unir-app-network
+    depends_on:
+      - api
+    restart: unless-stopped
+  api:
+    build: ./backend/
+    container_name: unir_act2_api
+    ports:
+      - "8000:80"
+    networks:
+      - unir-app-network
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DATABASE=unir # Nombre de la base de datos
+      - DB_USER=unir # Usuario de la base de datos
+      - DB_PASSWORD=unirAdmin # Contraseña de la base de datos
+    restart: unless-stopped
+  db:
+    build: ./persistencia/
+    container_name: unir_act2_db
+    environment:
+      - POSTGRES_PASSWORD=unirAdmin
+      - POSTGRES_DB=unir
+      - POSTGRES_USER=unir
+    volumes:
+      - db-pg-data:/var/lib/postgresql
+    networks:
+      - unir-app-network
+    ports:
+      - "5232:5432"
+    restart: unless-stopped
+# Red para la comunicación entre contenedores
+networks:
+  unir-app-network:
+    driver: bridge
+# Volumen para persistir los datos de la base de datos
+volumes:
+  db-pg-data:
+    driver: local
