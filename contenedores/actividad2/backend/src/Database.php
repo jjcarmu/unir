@@ -18,9 +18,13 @@ class Database {
     public function getConnection() {
         $this->conn = null;
         $dsn = "pgsql:host=" . $this->host . ";port=" . $this->port . ";dbname=" . $this->db_name;
-
+        #echo "DSN: " . $dsn . "\n"; // Línea de depuración para verificar el DSN
         try {
-            $this->conn = new PDO($dsn, $this->username, $this->password);
+            #echo "<pre>";
+            #print_r(getenv());
+            #echo "</pre>";
+            #$this->conn = new PDO($dsn, $this->username, $this->password);
+            $this->conn = new PDO("pgsql:host=172.20.0.10;port=5432;dbname=unir", "unir", "unirAdmin");
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch(PDOException $exception) {
             echo "Connection error: " . $exception->getMessage();
