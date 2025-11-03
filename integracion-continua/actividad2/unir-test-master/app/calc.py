@@ -1,3 +1,4 @@
+import math
 import app
 
 
@@ -31,9 +32,25 @@ class Calculator:
     def power(self, x, y):
         self.check_types(x, y)
         return x ** y
+        
+    def square_root(self, x):
+            self.check_type_single(x)
+            if x < 0:
+                raise TypeError("Cannot calculate square root of a negative number")
+            return math.sqrt(x)        
+
+    def log10(self, x):
+            self.check_type_single(x)
+            if x <= 0:
+                raise TypeError("Logarithm base 10 only defined for positive numbers")
+            return math.log10(x)
 
     def check_types(self, x, y):
         if not isinstance(x, (int, float)) or not isinstance(y, (int, float)):
+            raise TypeError("Parameters must be numbers")
+
+    def check_type_single(self, x):
+        if not isinstance(x, (int, float)):
             raise TypeError("Parameters must be numbers")
 
 
